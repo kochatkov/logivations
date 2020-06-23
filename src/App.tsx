@@ -12,7 +12,7 @@ const BASE_URL = 'http://data.fixer.io/api/latest?access_key=51d798b552fd3731403
 function App() {
     const expenses = useSelector(getListExpenses);
     const dispatch = useDispatch();
-    const [currencyOptions, setCurrencyOptions] = useState<any>([]);
+    const [currencyOptions, setCurrencyOptions] = useState<string[]>([]);
     const [toCurrency, setToCurrency] = useState();
     const [currenciesRate, setCurrenciesRate] = useState();
     const [total, setTotal] = useState(0);
@@ -21,7 +21,7 @@ function App() {
         if (toCurrency != null && currenciesRate != null) {
             const rate = expenses
                 .map(item => item.goods
-                    .reduce((acc: any, good: any) =>
+                    .reduce((acc: number, good: Good) =>
                         acc + (good.amount / currenciesRate[good.currency]), 0) * currenciesRate[toCurrency]);
             const totalRate = rate.reduce((acc, currency) => acc + currency, 0)
             setTotal(Math.round(totalRate));
@@ -40,6 +40,9 @@ function App() {
             })
     }, []);
 
+    const handlerChange = (e: React.ChangeEvent<HTMLSelectElement>) => (
+        setToCurrency(e.target.value)
+    );
 
   return (
     <div className="App">
@@ -59,7 +62,7 @@ function App() {
             <CurrencyRow
                 currencyOptions={currencyOptions}
                 selectedCurrency={toCurrency}
-                onChangeCurrency={(e: any) => setToCurrency(e.target.value)}
+                onChangeCurrency={handlerChange}
                 total={total}
             />
     </div>

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Dropdown } from 'semantic-ui-react';
 import { addExpensesByDate, setExpence } from '../../store/expencies';
 import { useDispatch, useSelector } from 'react-redux';
-import { Expencies } from '../../store/expencies';
 
 import { getExpenses } from '../../store';
 
@@ -37,8 +36,9 @@ const NewExpense = () => {
     };
 
     const handleDropdownCurrency = (e: any, data: any) => {
-        e.target.value = data.value;
-        setCurrency(e.target.value);
+        e.preventDefault();
+        // e.target.value = data.value;
+        setCurrency(data.value);
     }
 
     const handleSubmitExpence = (

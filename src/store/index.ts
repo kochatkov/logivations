@@ -1,5 +1,5 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
-import expencesReducer, { Expencies } from './expencies';
+import expencesReducer from './expencies';
 import sortReducer from './sort';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
@@ -25,10 +25,10 @@ export const getListExpenses = createSelector(
             case 'date':
                 return filterExpenses
                     .sort((a: Expencies, b: Expencies) =>
-                         // @ts-ignore
+                            // @ts-ignore
                         (Date.parse(new Date(a.date.split("/").reverse().join("-"))) -
-                        // @ts-ignore
-                        Date.parse(new Date(b.date.split("/").reverse().join("-")))) * sortDirection
+                            // @ts-ignore
+                            Date.parse(new Date(b.date.split("/").reverse().join("-")))) * sortDirection
                     );
             default:
                 return filterExpenses;

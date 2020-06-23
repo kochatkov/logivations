@@ -1,9 +1,9 @@
 import React from 'react';
 
 type CurrencyRowProps = {
-    currencyOptions: [],
+    currencyOptions: string[],
     selectedCurrency: [],
-    onChangeCurrency: (e: any) => void,
+    onChangeCurrency: (e: React.ChangeEvent<HTMLSelectElement>) => void,
     total: number,
 }
 

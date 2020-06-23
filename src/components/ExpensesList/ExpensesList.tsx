@@ -1,5 +1,4 @@
 import React from 'react';
-import { Expencies } from '../../store/expencies';
 import { useDispatch, useSelector } from 'react-redux';
 import { getListExpenses } from '../../store';
 import { removeExpences} from '../../store/expencies';

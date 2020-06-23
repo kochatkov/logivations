@@ -4,17 +4,7 @@ const SET_EXPENCES = 'SET_EXPENCES';
 const ADD_EXPENSES_BY_DATE = 'ADD_EXPENSES_BY_DATE';
 const REMOVE_EXPENCES = 'REMOVE_EXPENCES';
 
-export type Good = {
-    amount: number,
-    currency: string,
-    product: string,
-}
 
-export type Expencies = {
-    id: number,
-    goods: Good[],
-    date?: string,
-};
 
 
 export const addExpensesByDate = (date: string, data: Good) => ({
