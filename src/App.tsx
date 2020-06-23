@@ -1,24 +1,67 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import './App.scss';
+import NewExpense from './components/NewExpense/NewExpense';
+import { CurrencyRow } from './components/CurrencyRow/CurrencyRow';
+import { getListExpenses } from './store';
+import { useDispatch, useSelector } from 'react-redux';
+import { ExpensesList } from './components/ExpensesList/ExpensesList';
+import { SortBy } from './store/sort';
+
+const BASE_URL = 'http://data.fixer.io/api/latest?access_key=51d798b552fd3731403e61ce64a95795';
 
 function App() {
+    const expenses = useSelector(getListExpenses);
+    const dispatch = useDispatch();
+    const [currencyOptions, setCurrencyOptions] = useState<any>([]);
+    const [toCurrency, setToCurrency] = useState();
+    const [currenciesRate, setCurrenciesRate] = useState();
+    const [total, setTotal] = useState(0);
+
+    useEffect(() => {
+        if (toCurrency != null && currenciesRate != null) {
+            const rate = expenses
+                .map(item => item.goods
+                    .reduce((acc: any, good: any) =>
+                        acc + (good.amount / currenciesRate[good.currency]), 0) * currenciesRate[toCurrency]);
+            const totalRate = rate.reduce((acc, currency) => acc + currency, 0)
+            setTotal(Math.round(totalRate));
+        }
+    }, [toCurrency, currenciesRate, expenses]);
+
+
+    useEffect(() => {
+        fetch(BASE_URL)
+            .then(res => res.json())
+            .then(data => {
+                const firstCurrency = Object.keys(data.rates)[0];
+                setToCurrency(firstCurrency);
+                setCurrencyOptions([data.base, ...Object.keys(data.rates)]);
+                setCurrenciesRate(data.rates);
+            })
+    }, []);
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <header className="App__header">
+            <h1 className="App__head">Expenses</h1>
+            <NewExpense />
+        </header>
+        <div className="App__list">
+            <button
+                className="NewExpense__button-list button"
+                onClick={() => dispatch(SortBy('date'))}
+            >
+                list
+            </button>
+            <ExpensesList />
+        </div>
+            <CurrencyRow
+                currencyOptions={currencyOptions}
+                selectedCurrency={toCurrency}
+                onChangeCurrency={(e: any) => setToCurrency(e.target.value)}
+                total={total}
+            />
     </div>
   );
 }

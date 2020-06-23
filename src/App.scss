@@ -1,0 +1,41 @@
+@import "components/NewExpense/NewExpence";
+@import "components/CurrencyRow/CurrencyRow";
+
+.App {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  &__header {
+    background: black;
+    opacity: 0.8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 1;
+  }
+
+  &__head {
+    color: white;
+    width: 100vw;
+    text-align: center;
+  }
+
+  &__container {
+    margin: 0 auto;
+  }
+
+  &__list {
+    width: 723px;
+    transform: translateX(-18px);
+  }
+}
+
+.button {
+  min-height: 2.71428571em;
+  cursor: pointer;
+  border: none;
+  outline: 0;
+  border-radius: .28571429rem;
+}
