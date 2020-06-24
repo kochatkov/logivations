@@ -7,8 +7,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ExpensesList } from './components/ExpensesList/ExpensesList';
 import { SortBy } from './store/sort';
 
-// https://data.fixer.io/api/latest?access_key=51d798b552fd3731403e61ce64a95795
-
 const BASE_URL = 'https://api.exchangeratesapi.io/latest';
 
 function App() {
@@ -18,13 +16,15 @@ function App() {
     const [toCurrency, setToCurrency] = useState();
     const [currenciesRate, setCurrenciesRate] = useState();
     const [total, setTotal] = useState(0);
+    console.log(currencyOptions, toCurrency, currenciesRate)
 
     useEffect(() => {
         if (toCurrency != null && currenciesRate != null) {
             const rate = expenses
                 .map(item => item.goods
-                    .reduce((acc: number, good: Good) =>
-                        acc + (good.amount / currenciesRate[good.currency]), 0) * currenciesRate[toCurrency]);
+                    .reduce((acc: number, good: Good) => {
+                         return acc + (good.amount / currenciesRate[good.currency]);
+                    }, 0) * currenciesRate[toCurrency]);
             const totalRate = rate.reduce((acc, currency) => acc + currency, 0)
             setTotal(Math.round(totalRate));
         }
@@ -37,8 +37,9 @@ function App() {
                 if (typeof Object.keys(data.rates) !== 'undefined' && Object.keys(data.rates).length > 0) {
                     const firstCurrency = Object.keys(data.rates)[0];
                     setToCurrency(firstCurrency);
-                    setCurrencyOptions([data.base, ...Object.keys(data.rates)]);
+                    setCurrencyOptions([...Object.keys(data.rates)]);
                     setCurrenciesRate(data.rates);
+                    return console.log(data.base, data.rates)
                 }
             })
     }, []);
