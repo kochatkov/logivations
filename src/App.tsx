@@ -16,13 +16,15 @@ function App() {
     const [toCurrency, setToCurrency] = useState();
     const [currenciesRate, setCurrenciesRate] = useState();
     const [total, setTotal] = useState(0);
+    console.log(currencyOptions, toCurrency, currenciesRate)
 
     useEffect(() => {
         if (toCurrency != null && currenciesRate != null) {
             const rate = expenses
                 .map(item => item.goods
-                    .reduce((acc: number, good: Good) =>
-                        acc + (good.amount / currenciesRate[good.currency]), 0) * currenciesRate[toCurrency]);
+                    .reduce((acc: number, good: Good) => {
+                         return acc + (good.amount / currenciesRate[good.currency]);
+                    }, 0) * currenciesRate[toCurrency]);
             const totalRate = rate.reduce((acc, currency) => acc + currency, 0)
             setTotal(Math.round(totalRate));
         }
@@ -37,6 +39,7 @@ function App() {
                     setToCurrency(firstCurrency);
                     setCurrencyOptions([...Object.keys(data.rates)]);
                     setCurrenciesRate(data.rates);
+                    return console.log(data.base, data.rates)
                 }
             })
     }, []);
