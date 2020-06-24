@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/logivations/static/css/main.3767b941.chunk.css",
-    "main.js": "/logivations/static/js/main.f3a5ae85.chunk.js",
-    "main.js.map": "/logivations/static/js/main.f3a5ae85.chunk.js.map",
+    "main.js": "/logivations/static/js/main.e868ef62.chunk.js",
+    "main.js.map": "/logivations/static/js/main.e868ef62.chunk.js.map",
     "runtime-main.js": "/logivations/static/js/runtime-main.46e505a0.js",
     "runtime-main.js.map": "/logivations/static/js/runtime-main.46e505a0.js.map",
     "static/js/2.946d7514.chunk.js": "/logivations/static/js/2.946d7514.chunk.js",
     "static/js/2.946d7514.chunk.js.map": "/logivations/static/js/2.946d7514.chunk.js.map",
     "index.html": "/logivations/index.html",
-    "precache-manifest.bf9f6ef339e2e6584cfa3bdad9c311e4.js": "/logivations/precache-manifest.bf9f6ef339e2e6584cfa3bdad9c311e4.js",
+    "precache-manifest.9c8fd66c67fe3d96959f1f02d5b2517e.js": "/logivations/precache-manifest.9c8fd66c67fe3d96959f1f02d5b2517e.js",
     "service-worker.js": "/logivations/service-worker.js",
     "static/css/main.3767b941.chunk.css.map": "/logivations/static/css/main.3767b941.chunk.css.map",
     "static/js/2.946d7514.chunk.js.LICENSE.txt": "/logivations/static/js/2.946d7514.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.46e505a0.js",
     "static/js/2.946d7514.chunk.js",
     "static/css/main.3767b941.chunk.css",
-    "static/js/main.f3a5ae85.chunk.js"
+    "static/js/main.e868ef62.chunk.js"
   ]
 }
