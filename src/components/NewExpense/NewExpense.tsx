@@ -37,7 +37,6 @@ const NewExpense = () => {
 
     const handleDropdownCurrency = (e: any, data: any) => {
         e.preventDefault();
-        // e.target.value = data.value;
         setCurrency(data.value);
     }
 
