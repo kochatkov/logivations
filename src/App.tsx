@@ -7,8 +7,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ExpensesList } from './components/ExpensesList/ExpensesList';
 import { SortBy } from './store/sort';
 
-// https://data.fixer.io/api/latest?access_key=51d798b552fd3731403e61ce64a95795
-
 const BASE_URL = 'https://api.exchangeratesapi.io/latest';
 
 function App() {
@@ -37,7 +35,7 @@ function App() {
                 if (typeof Object.keys(data.rates) !== 'undefined' && Object.keys(data.rates).length > 0) {
                     const firstCurrency = Object.keys(data.rates)[0];
                     setToCurrency(firstCurrency);
-                    setCurrencyOptions([data.base, ...Object.keys(data.rates)]);
+                    setCurrencyOptions([...Object.keys(data.rates)]);
                     setCurrenciesRate(data.rates);
                 }
             })

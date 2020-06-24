@@ -7,7 +7,6 @@ import { getExpenses } from '../../store';
 
 const options = [
     {key: 'USD', text: 'USD', value: 'USD'},
-    {key: 'EUR', text: 'EUR', value: 'EUR'},
     {key: 'PLN', text: 'PLN', value: 'PLN'},
     {key: 'UAH', text: 'UAH', value: 'UAH'},
 ];
