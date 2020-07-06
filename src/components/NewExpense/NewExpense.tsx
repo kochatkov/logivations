@@ -7,9 +7,8 @@ import { getExpenses } from '../../store';
 
 const options = [
     {key: 'USD', text: 'USD', value: 'USD'},
-    {key: 'EUR', text: 'EUR', value: 'EUR'},
     {key: 'PLN', text: 'PLN', value: 'PLN'},
-    {key: 'UAH', text: 'UAH', value: 'UAH'},
+    {key: 'CAD', text: 'CAD', value: 'CAD'},
 ];
 
 const NewExpense = () => {
@@ -37,7 +36,6 @@ const NewExpense = () => {
 
     const handleDropdownCurrency = (e: any, data: any) => {
         e.preventDefault();
-        // e.target.value = data.value;
         setCurrency(data.value);
     }
 
