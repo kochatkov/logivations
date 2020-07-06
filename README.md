@@ -1,4 +1,12 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[DEMO LINK](https://kochatkov.github.io/logivations/#/)
+
+Зроблено: 
+Можливість додати витрату до списку. 
+Якщо дата витрат співпадає, то витрати додаються до цієї дати. 
+Кнопка list - сортує за датою в обох напрямках. 
+Додав кнопку 'Clear', яка видаляє витрати за датою. 
+Є LocalStorage. 
+Total - конвертує загальну вартість у вибраній валюті.
 
 ## Available Scripts
 

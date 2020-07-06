@@ -16,7 +16,6 @@ function App() {
     const [toCurrency, setToCurrency] = useState();
     const [currenciesRate, setCurrenciesRate] = useState();
     const [total, setTotal] = useState(0);
-    console.log(currencyOptions, toCurrency, currenciesRate)
 
     useEffect(() => {
         if (toCurrency != null && currenciesRate != null) {
@@ -39,7 +38,6 @@ function App() {
                     setToCurrency(firstCurrency);
                     setCurrencyOptions([...Object.keys(data.rates)]);
                     setCurrenciesRate(data.rates);
-                    return console.log(data.base, data.rates)
                 }
             })
     }, []);
